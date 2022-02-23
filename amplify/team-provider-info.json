@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-diaedu-dev-161031-authRole",
+      "UnauthRoleArn": "arn:aws:iam::643700062729:role/amplify-diaedu-dev-161031-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::643700062729:role/amplify-diaedu-dev-161031-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-diaedu-dev-161031-deployment",
+      "UnauthRoleName": "amplify-diaedu-dev-161031-unauthRole",
+      "StackName": "amplify-diaedu-dev-161031",
+      "StackId": "arn:aws:cloudformation:us-west-2:643700062729:stack/amplify-diaedu-dev-161031/ddb72680-8a05-11ec-a297-0a84c7142eb1",
+      "AmplifyAppId": "d2qvylxr41m84t"
+    },
+    "categories": {
+      "auth": {
+        "SugrFree": {}
+      }
+    }
+  }
+}
