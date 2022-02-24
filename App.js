@@ -23,6 +23,7 @@ import TreatmentOptions from "./screens/Home/TreatmentOptions";
 import UnderstandingDia from "./screens/Home/TreatmentOptions/UnderstandingDia";
 import { useFonts } from "@use-expo/font";
 import AppLoading from "expo-app-loading";
+import LottieView from "lottie-react-native";
 
 Amplify.configure(config);
 
@@ -31,29 +32,33 @@ const theme = extendTheme({
 		primary: nbTheme.colors.warmGray,
 	},
 	fontConfig: {
-		BalsamiqSans: {
+		SourceSerifPro: {
 			100: {
-				normal: "BalsamiqSans-Regular",
-				italic: "BalsamiqSans-Italic",
+				normal: "SourceSerifPro-Regular",
+				italic: "SourceSerifPro-BlackItalic",
 			},
 			200: {
-				normal: "BalsamiqSans-Regular",
-				italic: "BalsamiqSans-Italic",
+				normal: "SourceSerifPro-Black",
+				italic: "SourceSerifPro-BlackItalic",
 			},
 			300: {
-				normal: "BalsamiqSans-Regular",
-				italic: "BalsamiqSans-Italic",
+				normal: "SourceSerifPro-Bold",
+				italic: "SourceSerifPro-BoldItalic",
 			},
 			400: {
-				normal: "BalsamiqSans-Regular",
-				italic: "BalsamiqSans-Italic",
+				normal: "SourceSerifPro-Black",
+				italic: "SourceSerifPro-BlackItalic",
 			},
 			500: {
-				normal: "BalsamiqSans-Regular",
+				normal: "SourceSerifPro-SemiBold",
 			},
 			600: {
-				normal: "BalsamiqSans-Italic",
-				italic: "BalsamiqSans-Italic",
+				normal: "SourceSerifPro-SemiBoldItalic",
+				italic: "SourceSerifPro-SemiBoldItalic",
+			},
+			700: {
+				normal: "SourceSerifPro-Regular",
+				italic: "SourceSerifPro-SemiBoldItalic",
 			},
 			// Add more variants
 			//   700: {
@@ -72,9 +77,9 @@ const theme = extendTheme({
 
 	// Make sure values below matches any of the keys in `fontConfig`
 	fonts: {
-		heading: "BalsamiqSans-Bold",
-		body: "BalsamiqSans-Regular",
-		mono: "BalsamiqSans-Regular",
+		heading: "SourceSerifPro",
+		body: "SourceSerifPro",
+		mono: "SourceSerifPro",
 	},
 });
 
@@ -102,13 +107,46 @@ const AuthenticationNavigator = (props) => {
 		</AuthenticationStack.Navigator>
 	);
 };
+export const LoadLottie = () => {
+	let animation = React.createRef();
+
+	useEffect(() => {
+		animation.current.play();
+	}, []);
+
+	return (
+		<View>
+			<LottieView
+				ref={animation}
+				loop={true}
+				style={{
+					width: 200,
+					height: 200,
+				}}
+				source={require("./assets/lottie/loadLottie.json")}
+			/>
+		</View>
+	);
+};
 
 const Initializing = () => {
 	return (
 		<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-			<ActivityIndicator size="large" color="black" />
+			<LoadLottie />
 		</View>
 	);
+};
+
+const transitionConfig = {
+	animation: "spring",
+	config: {
+		stiffness: 1000,
+		damping: 500,
+		mass: 3,
+		overshootClamping: true,
+		restDisplacementThreshold: 0.01,
+		restSpeedThreshold: 0.01,
+	},
 };
 
 const configScreen = {
@@ -123,13 +161,19 @@ const configScreen = {
 	},
 };
 
+const forFade = ({ current }) => ({
+	cardStyle: {
+		opacity: current.progress,
+	},
+});
+
 const AppNavigator = (props) => {
 	return (
 		<AppStack.Navigator
 			screenOptions={({ route, navigation }) => ({
 				headerShown: false,
 				gestureEnabled: true,
-				...TransitionPresets.SlideFromRightIOS,
+				cardStyleInterpolator: forFade,
 			})}
 		>
 			<AppStack.Screen name="Home">
@@ -153,10 +197,15 @@ export default function App() {
 	const [isUserLoggedIn, setUserLoggedIn] = useState("initializing");
 
 	const [isLoaded] = useFonts({
-		"BalsamiqSans-Bold": require("./assets/fonts/BalsamiqSans-Bold.ttf"),
-		"BalsamiqSans-Regular": require("./assets/fonts/BalsamiqSans-Regular.ttf"),
-		"BalsamiqSans-Bold-Italic": require("./assets/fonts/BalsamiqSans-Italic.ttf"),
-		"BalsamiqSans-BoldItalic": require("./assets/fonts/BalsamiqSans-BoldItalic.ttf"),
+		"SourceSerifPro-Black": require("./assets/fonts/SourceSerifPro-Black.ttf"),
+		"SourceSerifPro-Regular": require("./assets/fonts/SourceSerifPro-Regular.ttf"),
+		"SourceSerifPro-Bold": require("./assets/fonts/SourceSerifPro-Bold.ttf"),
+		"SourceSerifPro-SemiBold": require("./assets/fonts/SourceSerifPro-SemiBold.ttf"),
+		"SourceSerifPro-SemiBoldItalic": require("./assets/fonts/SourceSerifPro-SemiBoldItalic.ttf"),
+		"SourceSerifPro-BoldItalic": require("./assets/fonts/SourceSerifPro-BoldItalic.ttf"),
+		"SourceSerifPro-Italic": require("./assets/fonts/SourceSerifPro-Italic.ttf"),
+		"SourceSerifPro-BlackItalic": require("./assets/fonts/SourceSerifPro-BlackItalic.ttf"),
+		"SourceSerifPro-Light": require("./assets/fonts/SourceSerifPro-Light.ttf"),
 	});
 
 	useEffect(() => {

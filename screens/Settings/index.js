@@ -81,6 +81,38 @@ export default function Settings({ navigation, updateAuthState }) {
 					<Hidden from="md">
 						<VStack px="4" mt="2" mb="2" space="9">
 							<VStack space="2">
+								<HStack
+									space="2"
+									alignItems="center"
+									justifyContent="space-between"
+								>
+									<IconButton
+										pl="0"
+										variant="unstyled"
+										onPress={() => navigation.goBack()}
+										icon={
+											<Icon
+												size="6"
+												as={AntDesign}
+												name="arrowleft"
+												color="coolGray.50"
+											/>
+										}
+									/>
+									<IconButton
+										pl="0"
+										variant="unstyled"
+										onPress={() => navigation.navigate("Home")}
+										icon={
+											<Icon
+												size="6"
+												as={AntDesign}
+												name="home"
+												color="coolGray.50"
+											/>
+										}
+									/>
+								</HStack>
 								<HStack>
 									<Text fontSize="3xl" color="coolGray.50">
 										Settings
@@ -91,21 +123,6 @@ export default function Settings({ navigation, updateAuthState }) {
 									<Spacer />
 									<Spacer />
 									<Spacer />
-									<HStack alignItems="center" flex="1">
-										<IconButton
-											pl="0"
-											variant="unstyled"
-											onPress={() => {}}
-											icon={
-												<Icon
-													size="6"
-													as={Entypo}
-													name="cog"
-													color="coolGray.50"
-												/>
-											}
-										/>
-									</HStack>
 								</HStack>
 
 								<Text

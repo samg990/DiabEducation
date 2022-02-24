@@ -20,6 +20,7 @@ import {
 	Badge,
 	Spacer,
 	Flex,
+	Heading,
 } from "native-base";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -87,7 +88,7 @@ export default function Home({ navigation, updateAuthState }) {
 						<VStack px="4" mt="2" mb="2" space="9">
 							<VStack space="2">
 								<HStack>
-									<Text fontSize="3xl" color="coolGray.50">
+									<Text fontSize="3xl" fontWeight={500} color="coolGray.50">
 										DiabEducation
 									</Text>
 									<Spacer />
@@ -115,7 +116,7 @@ export default function Home({ navigation, updateAuthState }) {
 									</HStack>
 								</HStack>
 
-								<Text
+								{/* <Text
 									fontSize="md"
 									fontWeight="normal"
 									_dark={{
@@ -126,7 +127,7 @@ export default function Home({ navigation, updateAuthState }) {
 									}}
 								>
 									Home
-								</Text>
+								</Text> */}
 							</VStack>
 						</VStack>
 					</Hidden>
@@ -145,16 +146,13 @@ export default function Home({ navigation, updateAuthState }) {
 
 						<VStack
 							flex="1"
-							px="9"
-							py="9"
 							_light={{
-								bg: "white",
+								bg: "black",
 							}}
 							_dark={{
 								bg: "coolGray.800",
 							}}
 							space="3"
-							justifyContent="space-between"
 							borderTopRightRadius={{
 								base: "2xl",
 								md: "xl",
@@ -168,8 +166,24 @@ export default function Home({ navigation, updateAuthState }) {
 								md: "0",
 							}}
 						>
-							<HStack alignItems="center" space="2" flexWrap="wrap">
-								<Animatable.View animation="bounceInLeft" duration={2000}>
+							<Text color="white" fontSize="20" px="4" mt="4" fontWeight={100}>
+								My Glucose
+							</Text>
+
+							<Animatable.View animation="fadeInDown" duration={2500}>
+								<Chart />
+							</Animatable.View>
+							<Text color="white" fontSize="20" px="4" fontWeight={100}>
+								Education
+							</Text>
+							<HStack
+								alignItems="center"
+								space="2"
+								flexWrap="wrap"
+								px="12"
+								py="4"
+							>
+								<Animatable.View animation="bounceInLeft" duration={3000}>
 									<Pressable
 										mb="1"
 										onPress={() => navigation.navigate("TreatmentOptions")}
@@ -177,21 +191,21 @@ export default function Home({ navigation, updateAuthState }) {
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="40"
-													h="40"
+													w="24"
+													h="24"
 													borderWidth="1"
-													borderColor="coolGray.300"
+													borderColor="#fad161"
 													shadow="3"
 													alignContent="center"
 													alignItems="center"
 													bg={
 														isPressed
-															? "coolGray.200"
+															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "coolGray.100"
+															: "#252422"
 													}
-													p="5"
+													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -219,14 +233,15 @@ export default function Home({ navigation, updateAuthState }) {
 													</HStack>
 													<Image
 														alt="doctor"
-														size={70}
+														size={12}
 														source={require("../../assets/doctor.png")}
 													/>
 													<Text
-														color="coolGray.800"
-														mt="3"
-														fontWeight="medium"
-														fontSize="14"
+														color="#fad161"
+														ml="4"
+														mt="1"
+														fontWeight="bold"
+														fontSize="12"
 													>
 														Treatment Options
 													</Text>
@@ -245,26 +260,26 @@ export default function Home({ navigation, updateAuthState }) {
 										}}
 									</Pressable>
 								</Animatable.View>
-								<Animatable.View animation="bounceInRight" duration={2000}>
+								<Animatable.View animation="bounceInDown" duration={3000}>
 									<Pressable mb="1" onPress={() => console.log("exercise")}>
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="40"
-													h="40"
+													w="24"
+													h="24"
 													borderWidth="1"
-													borderColor="coolGray.300"
+													borderColor="#fad161"
 													shadow="3"
 													alignContent="center"
 													alignItems="center"
 													bg={
 														isPressed
-															? "coolGray.200"
+															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "coolGray.100"
+															: "#252422"
 													}
-													p="5"
+													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -292,14 +307,14 @@ export default function Home({ navigation, updateAuthState }) {
 													</HStack>
 													<Image
 														alt="heart"
-														size={70}
+														size={12}
 														source={require("../../assets/heart.png")}
 													/>
 													<Text
-														color="coolGray.800"
-														mt="3"
-														fontWeight="medium"
-														fontSize="md"
+														color="#fad161"
+														mt="1"
+														fontWeight="bold"
+														fontSize="12"
 													>
 														Healthy Coping
 													</Text>
@@ -308,26 +323,26 @@ export default function Home({ navigation, updateAuthState }) {
 										}}
 									</Pressable>
 								</Animatable.View>
-								<Animatable.View animation="bounceInLeft" duration={2500}>
+								<Animatable.View animation="bounceInRight" duration={3000}>
 									<Pressable mb="1" onPress={() => console.log("behavioral")}>
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="40"
-													h="40"
+													w="24"
+													h="24"
 													borderWidth="1"
-													borderColor="coolGray.300"
+													borderColor="#fad161"
 													shadow="3"
 													alignContent="center"
 													alignItems="center"
 													bg={
 														isPressed
-															? "coolGray.200"
+															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "coolGray.100"
+															: "#252422"
 													}
-													p="5"
+													p="0.5"
 													rounded="8"
 													style={{
 														transform: [
@@ -355,15 +370,15 @@ export default function Home({ navigation, updateAuthState }) {
 													</HStack>
 													<Image
 														alt="behavior"
-														size={70}
+														size={12}
 														source={require("../../assets/customer-behavior.png")}
 													/>
 													<Text
-														px="5"
-														color="coolGray.800"
-														mt="3"
-														fontWeight="medium"
-														fontSize="md"
+														color="#fad161"
+														ml="4"
+														mt="1"
+														fontWeight="bold"
+														fontSize="12"
 													>
 														Behavioral Changes
 													</Text>
@@ -372,26 +387,26 @@ export default function Home({ navigation, updateAuthState }) {
 										}}
 									</Pressable>
 								</Animatable.View>
-								<Animatable.View animation="bounceInRight" duration={2500}>
+								<Animatable.View animation="bounceInLeft" duration={3500}>
 									<Pressable mb="1" onPress={() => console.log("nutrition")}>
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="40"
-													h="40"
+													w="24"
+													h="24"
 													borderWidth="1"
-													borderColor="coolGray.300"
+													borderColor="#fad161"
 													shadow="3"
 													alignContent="center"
 													alignItems="center"
 													bg={
 														isPressed
-															? "coolGray.200"
+															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "coolGray.100"
+															: "#252422"
 													}
-													p="5"
+													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -419,15 +434,14 @@ export default function Home({ navigation, updateAuthState }) {
 													</HStack>
 													<Image
 														alt="plan"
-														size={70}
+														size={12}
 														source={require("../../assets/plan.png")}
 													/>
 													<Text
-														px="5"
-														color="coolGray.800"
+														color="#fad161"
 														mt="3"
-														fontWeight="medium"
-														fontSize="md"
+														fontWeight="bold"
+														fontSize="13"
 													>
 														Nutrition
 													</Text>
@@ -436,26 +450,26 @@ export default function Home({ navigation, updateAuthState }) {
 										}}
 									</Pressable>
 								</Animatable.View>
-								<Animatable.View animation="bounceInLeft" duration={3000}>
+								<Animatable.View animation="bounceIn" duration={3000}>
 									<Pressable mb="1" onPress={() => console.log("Physical")}>
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="40"
-													h="40"
+													w="24"
+													h="24"
 													borderWidth="1"
-													borderColor="coolGray.300"
+													borderColor="#fad161"
 													shadow="3"
 													alignContent="center"
 													alignItems="center"
 													bg={
 														isPressed
-															? "coolGray.200"
+															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "coolGray.100"
+															: "#252422"
 													}
-													p="5"
+													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -483,15 +497,15 @@ export default function Home({ navigation, updateAuthState }) {
 													</HStack>
 													<Image
 														alt="physical"
-														size={70}
+														size={12}
 														source={require("../../assets/runner.png")}
 													/>
 													<Text
-														px="7"
-														color="coolGray.800"
-														mt="3"
-														fontWeight="medium"
-														fontSize="md"
+														color="#fad161"
+														ml="5"
+														mt="1"
+														fontWeight="bold"
+														fontSize="12"
 													>
 														Physical Activity
 													</Text>
@@ -500,26 +514,26 @@ export default function Home({ navigation, updateAuthState }) {
 										}}
 									</Pressable>
 								</Animatable.View>
-								<Animatable.View animation="bounceInRight" duration={3000}>
+								<Animatable.View animation="bounceInRight" duration={3500}>
 									<Pressable mb="1" onPress={() => console.log("medication")}>
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="40"
-													h="40"
+													w="24"
+													h="24"
 													borderWidth="1"
-													borderColor="coolGray.300"
+													borderColor="#fad161"
 													shadow="3"
 													alignContent="center"
 													alignItems="center"
 													bg={
 														isPressed
-															? "coolGray.200"
+															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "coolGray.100"
+															: "#252422"
 													}
-													p="5"
+													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -547,15 +561,14 @@ export default function Home({ navigation, updateAuthState }) {
 													</HStack>
 													<Image
 														alt="medicine"
-														size={70}
+														size={12}
 														source={require("../../assets/medicine.png")}
 													/>
 													<Text
-														px="4"
-														color="coolGray.800"
+														color="#fad161"
 														mt="3"
-														fontWeight="medium"
-														fontSize="md"
+														fontWeight="bold"
+														fontSize="13"
 													>
 														Medication
 													</Text>
@@ -564,26 +577,26 @@ export default function Home({ navigation, updateAuthState }) {
 										}}
 									</Pressable>
 								</Animatable.View>
-								<Animatable.View animation="bounceInLeft" duration={3500}>
+								<Animatable.View animation="bounceInLeft" duration={3000}>
 									<Pressable mb="1" onPress={() => console.log("glucose")}>
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="40"
-													h="40"
+													w="24"
+													h="24"
 													borderWidth="1"
-													borderColor="coolGray.300"
+													borderColor="#fad161"
 													shadow="3"
 													alignContent="center"
 													alignItems="center"
 													bg={
 														isPressed
-															? "coolGray.200"
+															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "coolGray.100"
+															: "#252422"
 													}
-													p="5"
+													p="0.5"
 													rounded="8"
 													style={{
 														transform: [
@@ -611,15 +624,15 @@ export default function Home({ navigation, updateAuthState }) {
 													</HStack>
 													<Image
 														alt="glucose"
-														size={70}
+														size={12}
 														source={require("../../assets/glucose-meter.png")}
 													/>
 													<Text
-														px="4"
-														color="coolGray.800"
-														mt="3"
-														fontWeight="medium"
-														fontSize="md"
+														color="#fad161"
+														mt="2"
+														ml="4"
+														fontWeight="bold"
+														fontSize="12"
 													>
 														Glucose Monitoring
 													</Text>
@@ -628,8 +641,144 @@ export default function Home({ navigation, updateAuthState }) {
 										}}
 									</Pressable>
 								</Animatable.View>
-								<Animatable.View animation="bounceInRight" duration={3500}>
+								<Animatable.View animation="bounceInUp" duration={3000}>
 									<Pressable mb="1" onPress={() => console.log("acute")}>
+										{({ isHovered, isFocused, isPressed }) => {
+											return (
+												<Box
+													w="24"
+													h="24"
+													borderWidth="1"
+													borderColor="#fad161"
+													shadow="3"
+													alignContent="center"
+													alignItems="center"
+													bg={
+														isPressed
+															? "#403d39"
+															: isHovered
+															? "coolGray.200"
+															: "#252422"
+													}
+													p="1"
+													rounded="8"
+													style={{
+														transform: [
+															{
+																scale: isPressed ? 0.96 : 1,
+															},
+														],
+													}}
+												>
+													<HStack alignItems="center">
+														{/* <Badge
+														colorScheme="darkBlue"
+														_text={{
+															color: "white",
+														}}
+														variant="solid"
+														rounded="4"
+													>
+														Business
+													</Badge> */}
+														{/* <Spacer />
+												<Text fontSize={10} color="coolGray.800">
+													1 month ago
+												</Text> */}
+													</HStack>
+													<Image
+														alt="chronic"
+														size={12}
+														source={require("../../assets/headache.png")}
+													/>
+													<Text
+														color="#fad161"
+														mt="1"
+														ml="1"
+														fontWeight="bold"
+														fontSize="12"
+													>
+														Acute/ Chronic Complications
+													</Text>
+												</Box>
+											);
+										}}
+									</Pressable>
+								</Animatable.View>
+								<Animatable.View animation="bounceInRight" duration={3000}>
+									<Pressable mb="1" onPress={() => console.log("acute")}>
+										{({ isHovered, isFocused, isPressed }) => {
+											return (
+												<Box
+													w="24"
+													h="24"
+													borderWidth="1"
+													borderColor="#fad161"
+													shadow="3"
+													alignContent="center"
+													alignItems="center"
+													bg={
+														isPressed
+															? "#403d39"
+															: isHovered
+															? "coolGray.200"
+															: "#252422"
+													}
+													p="1"
+													rounded="8"
+													style={{
+														transform: [
+															{
+																scale: isPressed ? 0.96 : 1,
+															},
+														],
+													}}
+												>
+													<HStack alignItems="center">
+														{/* <Badge
+														colorScheme="darkBlue"
+														_text={{
+															color: "white",
+														}}
+														variant="solid"
+														rounded="4"
+													>
+														Business
+													</Badge> */}
+														{/* <Spacer />
+												<Text fontSize={10} color="coolGray.800">
+													1 month ago
+												</Text> */}
+													</HStack>
+													<Image
+														alt="chronic"
+														size={12}
+														source={require("../../assets/monitor.png")}
+													/>
+													<Text
+														color="#fad161"
+														mt="3"
+														fontWeight="bold"
+														fontSize="13"
+													>
+														Dashboard
+													</Text>
+												</Box>
+											);
+										}}
+									</Pressable>
+								</Animatable.View>
+							</HStack>
+						</VStack>
+					</KeyboardAwareScrollView>
+				</Stack>
+			</Center>
+		</>
+	);
+}
+
+{
+	/* <Pressable mb="1" onPress={() => console.log("Physical")}>
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
@@ -667,35 +816,29 @@ export default function Home({ navigation, updateAuthState }) {
 														rounded="4"
 													>
 														Business
-													</Badge> */}
-														{/* <Spacer />
+													</Badge> */
+}
+{
+	/* <Spacer />
 												<Text fontSize={10} color="coolGray.800">
 													1 month ago
-												</Text> */}
-													</HStack>
-													<Image
-														alt="chronic"
-														size={70}
-														source={require("../../assets/headache.png")}
-													/>
-													<Text
-														color="coolGray.800"
-														mt="3"
-														fontWeight="medium"
-														fontSize="md"
-													>
-														Acute/ Chronic Complications
-													</Text>
-												</Box>
-											);
-										}}
-									</Pressable>
-								</Animatable.View>
-							</HStack>
-						</VStack>
-					</KeyboardAwareScrollView>
-				</Stack>
-			</Center>
-		</>
-	);
+												</Text> */
 }
+// 				</HStack>
+// 				<Image
+// 					alt="physical"
+// 					size={70}
+// 					source={require("../../assets/runner.png")}
+// 				/>
+// 				<Text
+// 					color="#ccff33"
+// 					mt="3"
+// 					fontWeight="bold"
+// 					fontSize="10"
+// 				>
+// 					Physical Activity
+// 				</Text>
+// 			</Box>
+// 		);
+// 	}}
+// </Pressable> */

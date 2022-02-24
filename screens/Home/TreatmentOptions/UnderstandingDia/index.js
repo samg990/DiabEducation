@@ -75,9 +75,41 @@ export default function TreatmentOptions({ navigation }) {
 					<Hidden from="md">
 						<VStack px="4" mt="2" mb="2" space="9">
 							<VStack space="2">
+								<HStack
+									space="2"
+									alignItems="center"
+									justifyContent="space-between"
+								>
+									<IconButton
+										pl="0"
+										variant="unstyled"
+										onPress={() => navigation.goBack()}
+										icon={
+											<Icon
+												size="6"
+												as={AntDesign}
+												name="arrowleft"
+												color="coolGray.50"
+											/>
+										}
+									/>
+									<IconButton
+										pl="0"
+										variant="unstyled"
+										onPress={() => navigation.navigate("Home")}
+										icon={
+											<Icon
+												size="6"
+												as={AntDesign}
+												name="home"
+												color="coolGray.50"
+											/>
+										}
+									/>
+								</HStack>
 								<HStack>
-									<Text fontSize="3xl" fontWeight="bold" color="coolGray.50">
-										Treatment Options
+									<Text fontSize="3xl" fontWeight={500} color="coolGray.50">
+										Understanding Diabetes
 									</Text>
 									<Spacer />
 									<Spacer />
@@ -85,23 +117,6 @@ export default function TreatmentOptions({ navigation }) {
 									<Spacer />
 									<Spacer />
 									<Spacer />
-									<HStack alignItems="center" flex="1">
-										<IconButton
-											pl="0"
-											variant="unstyled"
-											onPress={() => {
-												navigation.navigate("Settings");
-											}}
-											icon={
-												<Icon
-													size="6"
-													as={Entypo}
-													name="cog"
-													color="coolGray.50"
-												/>
-											}
-										/>
-									</HStack>
 								</HStack>
 
 								<Text
@@ -125,7 +140,7 @@ export default function TreatmentOptions({ navigation }) {
 						px="9"
 						py="9"
 						_light={{
-							bg: "white",
+							bg: "black",
 						}}
 						_dark={{
 							bg: "coolGray.800",
@@ -152,8 +167,10 @@ export default function TreatmentOptions({ navigation }) {
 								flex: 1,
 							}}
 						>
-							<Heading>Introduction</Heading>
-							<Text>
+							<Heading fontWeight={600} color="#fad161">
+								Introduction
+							</Heading>
+							<Text fontWeight={500} color="white">
 								Whether you’ve been newly diagnosed, have been fighting against
 								type 1 or type 2 diabetes for a while, or are helping a loved
 								one, you’ve come to the right place. This is the start of
@@ -164,8 +181,10 @@ export default function TreatmentOptions({ navigation }) {
 								live your best life. All you have to do is take action and stick
 								with it.{" "}
 							</Text>
-							<Heading>Understanding type 1</Heading>
-							<Text>
+							<Heading fontWeight={600} color="#fad161">
+								Understanding type 1
+							</Heading>
+							<Text fontWeight={500} color="white">
 								Here’s what you need to know about type 1 diabetes. Type 1
 								diabetes occurs at every age and in people of every race, shape,
 								and size. There is no shame in having it, and you have a
@@ -183,8 +202,8 @@ export default function TreatmentOptions({ navigation }) {
 								proper diet, you can live a normal life and do everything you
 								set out to do.
 							</Text>
-							<Heading>Understanding type 2</Heading>
-							<Text>
+							<Heading fontWeight={600}>Understanding type 2</Heading>
+							<Text fontWeight={500}>
 								Type 2 diabetes is the most common form of diabetes—and it means
 								that your body doesn’t use insulin properly. And while some
 								people can control their blood sugar levels with healthy eating

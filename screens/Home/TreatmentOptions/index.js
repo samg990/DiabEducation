@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import {
 	Button,
 	HStack,
@@ -22,6 +22,7 @@ import {
 	Flex,
 	FlatList,
 	Heading,
+	View,
 } from "native-base";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -30,6 +31,30 @@ import * as Animatable from "react-native-animatable";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Auth } from "aws-amplify";
+
+import LottieView from "lottie-react-native";
+
+export const HeartLottie = () => {
+	let animation = React.createRef();
+
+	useEffect(() => {
+		animation.current.play();
+	}, []);
+
+	return (
+		<View>
+			<LottieView
+				ref={animation}
+				loop={true}
+				style={{
+					width: 300,
+					height: 250,
+				}}
+				source={require("../../../assets/lottie/sheildLottie.json")}
+			/>
+		</View>
+	);
+};
 
 export default function TreatmentOptions({ navigation, updateAuthState }) {
 	const TreatmentList = () => {
@@ -83,9 +108,9 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 						<Pressable
 							onPress={() => navigation.navigate(item.routeName)}
 							_pressed={{
-								bg: "coolGray.100",
-								borderBottomRadius: "10",
-								borderTopRadius: "10",
+								bg: "#343a40",
+								borderBottomRadius: "30",
+								borderTopRadius: "30",
 							}}
 						>
 							<Animatable.View animation="bounceIn" duration={2000}>
@@ -105,8 +130,9 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 												_dark={{
 													color: "warmGray.50",
 												}}
-												color="coolGray.800"
+												color="#fad161"
 												fontSize="xl"
+												fontWeight={500}
 												pb="4"
 											>
 												{item.option}
@@ -186,8 +212,40 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 					<Hidden from="md">
 						<VStack px="4" mt="2" mb="2" space="9">
 							<VStack space="2">
+								<HStack
+									space="2"
+									alignItems="center"
+									justifyContent="space-between"
+								>
+									<IconButton
+										pl="0"
+										variant="unstyled"
+										onPress={() => navigation.goBack()}
+										icon={
+											<Icon
+												size="6"
+												as={AntDesign}
+												name="arrowleft"
+												color="coolGray.50"
+											/>
+										}
+									/>
+									<IconButton
+										pl="0"
+										variant="unstyled"
+										onPress={() => navigation.navigate("Home")}
+										icon={
+											<Icon
+												size="6"
+												as={AntDesign}
+												name="home"
+												color="coolGray.50"
+											/>
+										}
+									/>
+								</HStack>
 								<HStack>
-									<Text fontSize="3xl" color="coolGray.50">
+									<Text fontSize="3xl" color="coolGray.50" fontWeight={500}>
 										Treatment Options
 									</Text>
 									<Spacer />
@@ -196,23 +254,6 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 									<Spacer />
 									<Spacer />
 									<Spacer />
-									<HStack alignItems="center" flex="1">
-										<IconButton
-											pl="0"
-											variant="unstyled"
-											onPress={() => {
-												navigation.navigate("Settings");
-											}}
-											icon={
-												<Icon
-													size="6"
-													as={Entypo}
-													name="cog"
-													color="coolGray.50"
-												/>
-											}
-										/>
-									</HStack>
 								</HStack>
 
 								<Text
@@ -235,7 +276,7 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 						px="9"
 						py="9"
 						_light={{
-							bg: "white",
+							bg: "black",
 						}}
 						_dark={{
 							bg: "coolGray.800",
@@ -256,11 +297,7 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 						}}
 					>
 						<HStack alignSelf="center">
-							<Image
-								alt="doctor"
-								size={200}
-								source={require("../../../assets/doctor.png")}
-							/>
+							<HeartLottie />
 						</HStack>
 						<TreatmentList />
 					</Box>
