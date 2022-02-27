@@ -25,7 +25,8 @@ import {
 	View,
 } from "native-base";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import Entypo from "react-native-vector-icons/Entypo";
+import { Entypo } from "@expo/vector-icons";
+
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import * as Animatable from "react-native-animatable";
 
@@ -48,7 +49,7 @@ export const HeartLottie = () => {
 				loop={true}
 				style={{
 					width: 300,
-					height: 250,
+					height: 300,
 				}}
 				source={require("../../../assets/lottie/sheildLottie.json")}
 			/>
@@ -82,7 +83,7 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 			},
 			{
 				id: "4",
-				option: "A diabetes diagnosis, now what?",
+				option: "Diagnosed, now what?",
 				routeName: "DiagnosisDia",
 				timeStamp: "8:56 PM",
 				recentText: "All the best",
@@ -109,56 +110,35 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 							onPress={() => navigation.navigate(item.routeName)}
 							_pressed={{
 								bg: "#343a40",
-								borderBottomRadius: "30",
-								borderTopRadius: "30",
+								borderRadius: "10",
 							}}
 						>
 							<Animatable.View animation="bounceIn" duration={2000}>
 								<Box
-									borderBottomWidth="2"
-									_dark={{
-										borderColor: "gray.600",
-									}}
-									borderColor="coolGray.200"
+									borderBottomWidth="3"
+									borderColor="#9bf6ff"
 									pl="1"
 									pr="1"
 									py="5"
 								>
-									<HStack space={2} justifyContent="space-between">
-										<VStack>
+									<VStack>
+										<HStack space="2" justifyContent="space-between">
 											<Text
-												_dark={{
-													color: "warmGray.50",
-												}}
-												color="#fad161"
-												fontSize="xl"
-												fontWeight={500}
-												pb="4"
+												color="black"
+												fontSize="20"
+												fontWeight={400}
+												pb="2"
+												italic
 											>
 												{item.option}
 											</Text>
-
-											{/* <Text
-										color="coolGray.600"
-										_dark={{
-											color: "warmGray.200",
-										}}
-									>
-										{item.recentText}
-									</Text> */}
-										</VStack>
-										<Spacer />
-										{/* <Text
-									fontSize="xs"
-									_dark={{
-										color: "warmGray.50",
-									}}
-									color="coolGray.800"
-									alignSelf="flex-start"
-								>
-									{item.timeStamp}
-								</Text> */}
-									</HStack>
+											<Entypo
+												name="chevron-small-right"
+												size={20}
+												color="black"
+											/>
+										</HStack>
+									</VStack>
 								</Box>
 							</Animatable.View>
 						</Pressable>
@@ -174,15 +154,15 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 			<StatusBar
 				translucent
 				backgroundColor="transparent"
-				barStyle="light-content"
+				barStyle="dark-content"
 			/>
 			<Box
 				safeAreaTop
 				_light={{
-					bg: "primary.900",
+					bg: "white",
 				}}
 				_dark={{
-					bg: "coolGray.900",
+					bg: "#f8f9fa",
 				}}
 			/>
 			<Center
@@ -191,7 +171,7 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 					bg: "coolGray.900",
 				}}
 				_light={{
-					bg: "primary.900",
+					bg: "white",
 				}}
 				flex="1"
 			>
@@ -212,11 +192,7 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 					<Hidden from="md">
 						<VStack px="4" mt="2" mb="2" space="9">
 							<VStack space="2">
-								<HStack
-									space="2"
-									alignItems="center"
-									justifyContent="space-between"
-								>
+								<HStack justifyContent="space-between">
 									<IconButton
 										pl="0"
 										variant="unstyled"
@@ -226,47 +202,25 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 												size="6"
 												as={AntDesign}
 												name="arrowleft"
-												color="coolGray.50"
+												color="black"
 											/>
 										}
 									/>
+									<Text fontSize="22" fontWeight={500} color="black">
+										Treatment Options
+									</Text>
+
 									<IconButton
 										pl="0"
 										variant="unstyled"
-										onPress={() => navigation.navigate("Home")}
+										onPress={() => {
+											navigation.navigate("Home");
+										}}
 										icon={
-											<Icon
-												size="6"
-												as={AntDesign}
-												name="home"
-												color="coolGray.50"
-											/>
+											<Icon size="6" as={AntDesign} name="home" color="black" />
 										}
 									/>
 								</HStack>
-								<HStack>
-									<Text fontSize="3xl" color="coolGray.50" fontWeight={500}>
-										Treatment Options
-									</Text>
-									<Spacer />
-									<Spacer />
-									<Spacer />
-									<Spacer />
-									<Spacer />
-									<Spacer />
-								</HStack>
-
-								<Text
-									fontSize="md"
-									_dark={{
-										color: "coolGray.400",
-									}}
-									_light={{
-										color: "primary.300",
-									}}
-								>
-									Categories
-								</Text>
 							</VStack>
 						</VStack>
 					</Hidden>
@@ -276,7 +230,7 @@ export default function TreatmentOptions({ navigation, updateAuthState }) {
 						px="9"
 						py="9"
 						_light={{
-							bg: "black",
+							bg: "white",
 						}}
 						_dark={{
 							bg: "coolGray.800",

@@ -32,54 +32,35 @@ const theme = extendTheme({
 		primary: nbTheme.colors.warmGray,
 	},
 	fontConfig: {
-		SourceSerifPro: {
+		Lobster: {
 			100: {
-				normal: "SourceSerifPro-Regular",
-				italic: "SourceSerifPro-BlackItalic",
+				normal: "Lobster-Regular",
+				italic: "Lobster-Regular",
 			},
 			200: {
-				normal: "SourceSerifPro-Black",
-				italic: "SourceSerifPro-BlackItalic",
+				normal: "NewsCycle-Regular",
+				italic: "NewsCycle-Bold",
 			},
 			300: {
-				normal: "SourceSerifPro-Bold",
-				italic: "SourceSerifPro-BoldItalic",
+				normal: "Comfortaa-Light",
+				italic: "Comfortaa-SemiBold",
 			},
 			400: {
-				normal: "SourceSerifPro-Black",
-				italic: "SourceSerifPro-BlackItalic",
+				normal: "Comfortaa-Medium",
+				italic: "Comfortaa-Bold",
 			},
 			500: {
-				normal: "SourceSerifPro-SemiBold",
+				normal: "Courgette-Regular",
+				italic: "Courgette-Regular",
 			},
-			600: {
-				normal: "SourceSerifPro-SemiBoldItalic",
-				italic: "SourceSerifPro-SemiBoldItalic",
-			},
-			700: {
-				normal: "SourceSerifPro-Regular",
-				italic: "SourceSerifPro-SemiBoldItalic",
-			},
-			// Add more variants
-			//   700: {
-			//     normal: 'Roboto-Bold',
-			//   },
-			//   800: {
-			//     normal: 'Roboto-Bold',
-			//     italic: 'Roboto-BoldItalic',
-			//   },
-			//   900: {
-			//     normal: 'Roboto-Bold',
-			//     italic: 'Roboto-BoldItalic',
-			//   },
 		},
 	},
 
 	// Make sure values below matches any of the keys in `fontConfig`
 	fonts: {
-		heading: "SourceSerifPro",
-		body: "SourceSerifPro",
-		mono: "SourceSerifPro",
+		heading: "Lobster",
+		body: "Lobster",
+		mono: "Lobster",
 	},
 });
 
@@ -197,15 +178,14 @@ export default function App() {
 	const [isUserLoggedIn, setUserLoggedIn] = useState("initializing");
 
 	const [isLoaded] = useFonts({
-		"SourceSerifPro-Black": require("./assets/fonts/SourceSerifPro-Black.ttf"),
-		"SourceSerifPro-Regular": require("./assets/fonts/SourceSerifPro-Regular.ttf"),
-		"SourceSerifPro-Bold": require("./assets/fonts/SourceSerifPro-Bold.ttf"),
-		"SourceSerifPro-SemiBold": require("./assets/fonts/SourceSerifPro-SemiBold.ttf"),
-		"SourceSerifPro-SemiBoldItalic": require("./assets/fonts/SourceSerifPro-SemiBoldItalic.ttf"),
-		"SourceSerifPro-BoldItalic": require("./assets/fonts/SourceSerifPro-BoldItalic.ttf"),
-		"SourceSerifPro-Italic": require("./assets/fonts/SourceSerifPro-Italic.ttf"),
-		"SourceSerifPro-BlackItalic": require("./assets/fonts/SourceSerifPro-BlackItalic.ttf"),
-		"SourceSerifPro-Light": require("./assets/fonts/SourceSerifPro-Light.ttf"),
+		"Comfortaa-Bold": require("./assets/fonts/Comfortaa-Bold.ttf"),
+		"Comfortaa-Medium": require("./assets/fonts/Comfortaa-Medium.ttf"),
+		"Comfortaa-Light": require("./assets/fonts/Comfortaa-Light.ttf"),
+		"Comfortaa-SemiBold": require("./assets/fonts/Comfortaa-SemiBold.ttf"),
+		"Courgette-Regular": require("./assets/fonts/Courgette-Regular.ttf"),
+		"Lobster-Regular": require("./assets/fonts/Lobster-Regular.ttf"),
+		"NewsCycle-Bold": require("./assets/fonts/NewsCycle-Bold.ttf"),
+		"NewsCycle-Regular": require("./assets/fonts/NewsCycle-Regular.ttf"),
 	});
 
 	useEffect(() => {

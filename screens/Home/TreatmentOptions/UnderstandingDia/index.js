@@ -22,14 +22,198 @@ import {
 	Flex,
 	FlatList,
 	Heading,
+	PresenceTransition,
 } from "native-base";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import Entypo from "react-native-vector-icons/Entypo";
+import { AntDesign, Entypo } from "@expo/vector-icons";
+
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import * as Animatable from "react-native-animatable";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Auth } from "aws-amplify";
+
+const Scale = () => {
+	const [isOpen, setIsOpen] = React.useState(false);
+	const [isTypeOne, setIsTypeOne] = React.useState(false);
+	const [isTypeTwo, setIsTypeTwo] = React.useState(false);
+	return (
+		<Center>
+			<Box
+				bgColor="coolGray.800"
+				alignItems="center"
+				borderWidth="5"
+				borderColor="coolGray.800"
+				borderRadius="16"
+			>
+				<Pressable onPress={() => setIsOpen(!isOpen)} m="5">
+					{isOpen ? (
+						<Box alignItems="center">
+							<Heading fontWeight={500} color="coolGray.400" fontSize="30">
+								Understanding Type 1
+							</Heading>
+							<Entypo name="chevron-up" size={24} color="white" />
+						</Box>
+					) : (
+						<Box alignItems="center">
+							<Heading fontWeight={500} color="white" fontSize="30">
+								Understanding Type 1
+							</Heading>
+							<Entypo name="chevron-down" size={24} color="white" />
+						</Box>
+					)}
+				</Pressable>
+				<PresenceTransition
+					visible={isOpen}
+					initial={{
+						opacity: 0,
+						scale: 0,
+					}}
+					animate={{
+						opacity: 1,
+						scale: 1,
+						transition: {
+							duration: 300,
+							type: "spring",
+						},
+					}}
+				>
+					<Text fontWeight={300} italic color="white" m="2">
+						Whether you’ve been newly diagnosed, have been fighting against type
+						1 or type 2 diabetes for a while, or are helping a loved one, you’ve
+						come to the right place. This is the start of gaining a deeper
+						understanding of how you can live a healthier life—with all the
+						tools, health tips, and food ideas you need. Wherever you’re at with
+						your diabetes, know that you have options and that you don’t have to
+						be held back. You can still live your best life. All you have to do
+						is take action and stick with it.{" "}
+					</Text>
+				</PresenceTransition>
+			</Box>
+			<Pressable onPress={() => setIsTypeOne(!isTypeOne)} m="5">
+				<Heading fontWeight={600} color="black" fontSize="30">
+					{isTypeOne ? "Understanding Type 1" : "Understanding Type 1"}
+				</Heading>
+			</Pressable>
+			<PresenceTransition
+				visible={isTypeOne}
+				initial={{
+					opacity: 0,
+					scale: 0,
+				}}
+				animate={{
+					opacity: 1,
+					scale: 1,
+					transition: {
+						duration: 250,
+						type: "spring",
+					},
+				}}
+			>
+				<Text fontWeight={300} italic color="black" fontSize="16">
+					Here’s what you need to know about type 1 diabetes. Type 1 diabetes
+					occurs at every age and in people of every race, shape, and size.
+					There is no shame in having it, and you have a community of people
+					ready to support you. Learning as much as you can about it and working
+					closely with your diabetes care team can give you everything you need
+					to thrive. In type 1 diabetes, the body does not produce insulin. The
+					body breaks down the carbohydrates you eat into blood sugar (blood
+					glucose) that it uses for energy—and insulin is a hormone that the
+					body needs to get glucose from the bloodstream into the cells of the
+					body. With the help of insulin therapy and other treatments, everyone
+					can learn to manage their condition and live long, healthy lives.
+					Remember: this is a condition that can be managed. By living a healthy
+					lifestyle filled with exercise and proper diet, you can live a normal
+					life and do everything you set out to do.
+				</Text>
+			</PresenceTransition>
+			<Pressable onPress={() => setIsTypeOne(!isTypeOne)} m="5">
+				<Heading fontWeight={600} color="#90e0ef" fontSize="30">
+					{isTypeOne ? "Understanding Type 1" : "Understanding Type 1"}
+				</Heading>
+			</Pressable>
+			<PresenceTransition
+				visible={isTypeOne}
+				initial={{
+					opacity: 0,
+					scale: 0,
+				}}
+				animate={{
+					opacity: 1,
+					scale: 1,
+					transition: {
+						duration: 250,
+						type: "spring",
+					},
+				}}
+			>
+				<Text fontWeight={300} italic color="black" fontSize="16">
+					Here’s what you need to know about type 1 diabetes. Type 1 diabetes
+					occurs at every age and in people of every race, shape, and size.
+					There is no shame in having it, and you have a community of people
+					ready to support you. Learning as much as you can about it and working
+					closely with your diabetes care team can give you everything you need
+					to thrive. In type 1 diabetes, the body does not produce insulin. The
+					body breaks down the carbohydrates you eat into blood sugar (blood
+					glucose) that it uses for energy—and insulin is a hormone that the
+					body needs to get glucose from the bloodstream into the cells of the
+					body. With the help of insulin therapy and other treatments, everyone
+					can learn to manage their condition and live long, healthy lives.
+					Remember: this is a condition that can be managed. By living a healthy
+					lifestyle filled with exercise and proper diet, you can live a normal
+					life and do everything you set out to do.
+				</Text>
+			</PresenceTransition>
+			<Pressable onPress={() => setIsTypeTwo(!isTypeTwo)} m="5">
+				<Heading fontWeight={600} color="#90e0ef" fontSize="30">
+					{isTypeTwo ? "Understanding A1c" : "Understanding A1c"}
+				</Heading>
+			</Pressable>
+			<PresenceTransition
+				visible={isTypeTwo}
+				initial={{
+					opacity: 0,
+					scale: 0,
+				}}
+				animate={{
+					opacity: 1,
+					scale: 1,
+					transition: {
+						duration: 250,
+						type: "spring",
+					},
+				}}
+			>
+				<Text fontWeight={400} italic color="black" fontSize="30" mb="3">
+					So, what do the numbers mean?
+				</Text>
+				<Text fontWeight={300} italic color="black">
+					When it comes to the numbers, there's no one-size-fits-all target. A1C
+					target levels can vary by each person's age and other factors, and
+					your target may be different from someone else's. The goal for most
+					adults with diabetes is an A1C that is less than 7% . A1C test results
+					are reported as a percentage. The higher the percentage, the higher
+					your blood sugar levels over the past two to three months. The A1C
+					test can also be used for diagnosis, based on the following
+					guidelines:
+				</Text>
+				<Image
+					source={require("../../../../assets/UnderstandingDiabetes/a1cChart.jpg")}
+					alt="a1cChart"
+					h="70"
+					w="500"
+				/>
+				<Text fontWeight={300} italic color="black">
+					- If your A1C level is between 5.7 and less than 6.5%, your levels
+					have been in the prediabetes range.
+				</Text>
+				<Text fontWeight={300} italic color="black">
+					- If your A1C level is between 5.7 and less than 6.5%, your levels
+					have been in the prediabetes range.
+				</Text>
+			</PresenceTransition>
+		</Center>
+	);
+};
 
 export default function TreatmentOptions({ navigation }) {
 	return (
@@ -37,15 +221,15 @@ export default function TreatmentOptions({ navigation }) {
 			<StatusBar
 				translucent
 				backgroundColor="transparent"
-				barStyle="light-content"
+				barStyle="dark-content"
 			/>
 			<Box
 				safeAreaTop
 				_light={{
-					bg: "primary.900",
+					bg: "white",
 				}}
 				_dark={{
-					bg: "coolGray.900",
+					bg: "#f8f9fa",
 				}}
 			/>
 			<Center
@@ -54,7 +238,7 @@ export default function TreatmentOptions({ navigation }) {
 					bg: "coolGray.900",
 				}}
 				_light={{
-					bg: "primary.900",
+					bg: "white",
 				}}
 				flex="1"
 			>
@@ -75,11 +259,7 @@ export default function TreatmentOptions({ navigation }) {
 					<Hidden from="md">
 						<VStack px="4" mt="2" mb="2" space="9">
 							<VStack space="2">
-								<HStack
-									space="2"
-									alignItems="center"
-									justifyContent="space-between"
-								>
+								<HStack justifyContent="space-between">
 									<IconButton
 										pl="0"
 										variant="unstyled"
@@ -89,34 +269,24 @@ export default function TreatmentOptions({ navigation }) {
 												size="6"
 												as={AntDesign}
 												name="arrowleft"
-												color="coolGray.50"
+												color="black"
 											/>
 										}
 									/>
+									<Text fontSize="22" fontWeight={500} color="black">
+										Understanding Diabetes
+									</Text>
+
 									<IconButton
 										pl="0"
 										variant="unstyled"
-										onPress={() => navigation.navigate("Home")}
+										onPress={() => {
+											navigation.navigate("Home");
+										}}
 										icon={
-											<Icon
-												size="6"
-												as={AntDesign}
-												name="home"
-												color="coolGray.50"
-											/>
+											<Icon size="6" as={AntDesign} name="home" color="black" />
 										}
 									/>
-								</HStack>
-								<HStack>
-									<Text fontSize="3xl" fontWeight={500} color="coolGray.50">
-										Understanding Diabetes
-									</Text>
-									<Spacer />
-									<Spacer />
-									<Spacer />
-									<Spacer />
-									<Spacer />
-									<Spacer />
 								</HStack>
 
 								<Text
@@ -140,7 +310,7 @@ export default function TreatmentOptions({ navigation }) {
 						px="9"
 						py="9"
 						_light={{
-							bg: "black",
+							bg: "white",
 						}}
 						_dark={{
 							bg: "coolGray.800",
@@ -166,61 +336,9 @@ export default function TreatmentOptions({ navigation }) {
 							style={{
 								flex: 1,
 							}}
+							showsVerticalScrollIndicator={false}
 						>
-							<Heading fontWeight={600} color="#fad161">
-								Introduction
-							</Heading>
-							<Text fontWeight={500} color="white">
-								Whether you’ve been newly diagnosed, have been fighting against
-								type 1 or type 2 diabetes for a while, or are helping a loved
-								one, you’ve come to the right place. This is the start of
-								gaining a deeper understanding of how you can live a healthier
-								life—with all the tools, health tips, and food ideas you need.
-								Wherever you’re at with your diabetes, know that you have
-								options and that you don’t have to be held back. You can still
-								live your best life. All you have to do is take action and stick
-								with it.{" "}
-							</Text>
-							<Heading fontWeight={600} color="#fad161">
-								Understanding type 1
-							</Heading>
-							<Text fontWeight={500} color="white">
-								Here’s what you need to know about type 1 diabetes. Type 1
-								diabetes occurs at every age and in people of every race, shape,
-								and size. There is no shame in having it, and you have a
-								community of people ready to support you. Learning as much as
-								you can about it and working closely with your diabetes care
-								team can give you everything you need to thrive. In type 1
-								diabetes, the body does not produce insulin. The body breaks
-								down the carbohydrates you eat into blood sugar (blood glucose)
-								that it uses for energy—and insulin is a hormone that the body
-								needs to get glucose from the bloodstream into the cells of the
-								body. With the help of insulin therapy and other treatments,
-								everyone can learn to manage their condition and live long,
-								healthy lives. Remember: this is a condition that can be
-								managed. By living a healthy lifestyle filled with exercise and
-								proper diet, you can live a normal life and do everything you
-								set out to do.
-							</Text>
-							<Heading fontWeight={600}>Understanding type 2</Heading>
-							<Text fontWeight={500}>
-								Type 2 diabetes is the most common form of diabetes—and it means
-								that your body doesn’t use insulin properly. And while some
-								people can control their blood sugar levels with healthy eating
-								and exercise, others may need medication or insulin to help
-								manage it. Regardless, you have options—and we're here with the
-								tools, resources, and support you need. A key part of managing
-								type 2 diabetes is maintaining a healthy diet. You need to eat
-								something sustainable that helps you feel better and still makes
-								you feel happy and fed. Remember, it’s a process. Work to find
-								helpful tips and diet plans that best suit your lifestyle—and
-								how you can make your nutritional intake work the hardest for
-								you. Fitness is another key to managing type 2. And the good
-								news, all you have to do is get moving. The key is to find
-								activities you love and do them as often as you can. No matter
-								how fit you are, a little activity every day can help you put
-								yourself in charge of your life.
-							</Text>
+							<Scale />
 						</KeyboardAwareScrollView>
 					</Box>
 				</Stack>

@@ -25,17 +25,17 @@ export default function Chart() {
 	};
 
 	const chartConfig = {
-		backgroundGradientFrom: "#1E2923",
-		backgroundGradientFromOpacity: 0,
-		backgroundGradientTo: "#08130D",
-		backgroundGradientToOpacity: 0.5,
-		color: (opacity = 1) => `rgba(255, 214, 10, ${opacity})`,
+		backgroundGradientFrom: "#3C5875",
+		backgroundGradientFromOpacity: 1,
+		backgroundGradientTo: "#3C5875",
+		backgroundGradientToOpacity: 1,
+		color: (opacity = 1) => `rgba(173, 232, 244, ${opacity})`,
 		labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
 		strokeWidth: 4, // optional, default 3
 		propsForDots: {
-			r: "4",
-			strokeWidth: "2",
-			stroke: "#ffa726",
+			r: "5",
+			strokeWidth: "1",
+			stroke: "#ade8f4",
 		},
 		useShadowColorFromDataset: false, // optional
 	};
@@ -50,7 +50,15 @@ export default function Chart() {
 				bezier
 				style={{
 					marginVertical: 1,
+					marginLeft: 4,
+					marginRight: 13,
 					borderRadius: 16,
+					shadowColor: "#00000",
+					shadowOffset: {
+						width: 2,
+						height: 3,
+					},
+					shadowRadius: 20,
 				}}
 				fromZero
 			/>

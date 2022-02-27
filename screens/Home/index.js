@@ -49,15 +49,15 @@ export default function Home({ navigation, updateAuthState }) {
 			<StatusBar
 				translucent
 				backgroundColor="transparent"
-				barStyle="light-content"
+				barStyle="dark-content"
 			/>
 			<Box
 				safeAreaTop
 				_light={{
-					bg: "primary.900",
+					bg: "white",
 				}}
 				_dark={{
-					bg: "coolGray.900",
+					bg: "#f8f9fa",
 				}}
 			/>
 			<Center
@@ -66,7 +66,7 @@ export default function Home({ navigation, updateAuthState }) {
 					bg: "coolGray.900",
 				}}
 				_light={{
-					bg: "primary.900",
+					bg: "white",
 				}}
 				flex="1"
 			>
@@ -87,33 +87,36 @@ export default function Home({ navigation, updateAuthState }) {
 					<Hidden from="md">
 						<VStack px="4" mt="2" mb="2" space="9">
 							<VStack space="2">
-								<HStack>
-									<Text fontSize="3xl" fontWeight={500} color="coolGray.50">
+								<HStack justifyContent="space-between">
+									<IconButton
+										pl="0"
+										variant="unstyled"
+										onPress={() => {
+											navigation.navigate("");
+										}}
+										icon={
+											<Icon
+												size="6"
+												as={AntDesign}
+												name="arrowleft"
+												color="black"
+											/>
+										}
+									/>
+									<Text fontSize="22" fontWeight={500} color="black">
 										DiabEducation
 									</Text>
-									<Spacer />
-									<Spacer />
-									<Spacer />
-									<Spacer />
-									<Spacer />
-									<Spacer />
-									<HStack alignItems="center" flex="1">
-										<IconButton
-											pl="0"
-											variant="unstyled"
-											onPress={() => {
-												navigation.navigate("Settings");
-											}}
-											icon={
-												<Icon
-													size="6"
-													as={Entypo}
-													name="cog"
-													color="coolGray.50"
-												/>
-											}
-										/>
-									</HStack>
+
+									<IconButton
+										pl="0"
+										variant="unstyled"
+										onPress={() => {
+											navigation.navigate("Settings");
+										}}
+										icon={
+											<Icon size="6" as={Entypo} name="cog" color="black" />
+										}
+									/>
 								</HStack>
 
 								{/* <Text
@@ -147,7 +150,7 @@ export default function Home({ navigation, updateAuthState }) {
 						<VStack
 							flex="1"
 							_light={{
-								bg: "black",
+								bg: "white",
 							}}
 							_dark={{
 								bg: "coolGray.800",
@@ -166,21 +169,48 @@ export default function Home({ navigation, updateAuthState }) {
 								md: "0",
 							}}
 						>
-							<Text color="white" fontSize="20" px="4" mt="4" fontWeight={100}>
-								My Glucose
-							</Text>
+							<HStack justifyContent="space-between">
+								<Text
+									color="black"
+									fontSize="21"
+									px="4"
+									mt="4"
+									fontWeight={400}
+									italic
+								>
+									My Glucose
+								</Text>
+								<Pressable px="4" mt="4">
+									<Text color="#69A4DF" fontSize="17" fontWeight={300} italic>
+										Add
+									</Text>
+								</Pressable>
+							</HStack>
 
 							<Animatable.View animation="fadeInDown" duration={2500}>
 								<Chart />
 							</Animatable.View>
-							<Text color="white" fontSize="20" px="4" fontWeight={100}>
-								Education
-							</Text>
+							<HStack justifyContent="space-between">
+								<Text
+									color="black"
+									fontSize="21"
+									px="4"
+									fontWeight={400}
+									italic
+								>
+									Education Center
+								</Text>
+								<Pressable px="4" mt="4">
+									<Text color="#69A4DF" fontSize="17" fontWeight={300} italic>
+										See All
+									</Text>
+								</Pressable>
+							</HStack>
 							<HStack
 								alignItems="center"
 								space="2"
 								flexWrap="wrap"
-								px="12"
+								px="9"
 								py="4"
 							>
 								<Animatable.View animation="bounceInLeft" duration={3000}>
@@ -191,21 +221,20 @@ export default function Home({ navigation, updateAuthState }) {
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="24"
-													h="24"
+													w="40"
+													h="40"
 													borderWidth="1"
-													borderColor="#fad161"
-													shadow="3"
+													borderColor="#9bf6ff"
+													shadow="7"
 													alignContent="center"
-													alignItems="center"
+													justifyContent="space-between"
 													bg={
 														isPressed
 															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "#252422"
+															: "#9bf6ff"
 													}
-													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -231,30 +260,34 @@ export default function Home({ navigation, updateAuthState }) {
 													1 month ago
 												</Text> */}
 													</HStack>
-													<Image
-														alt="doctor"
-														size={12}
-														source={require("../../assets/doctor.png")}
-													/>
+
 													<Text
-														color="#fad161"
-														ml="4"
-														mt="1"
-														fontWeight="bold"
-														fontSize="12"
+														color="black"
+														ml="3"
+														fontWeight={500}
+														italic
+														fontSize="lg"
 													>
 														Treatment Options
 													</Text>
-													{/* <Icon
+													<Text
+														color="black"
+														ml="3"
+														fontSize="11"
+														opacity="0.5"
+													>
+														Learn about all the different treatment options
+													</Text>
+													<Icon
 														as={Entypo}
-														name="shopping-cart"
-														color="coolGray.800"
-														mt="2"
-														size="16"
+														name="chevron-small-right"
+														color="black"
+														ml="3"
+														size="8"
 														_dark={{
 															color: "warmGray.50",
 														}}
-													/> */}
+													/>
 												</Box>
 											);
 										}}
@@ -265,21 +298,20 @@ export default function Home({ navigation, updateAuthState }) {
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="24"
-													h="24"
+													w="40"
+													h="40"
 													borderWidth="1"
-													borderColor="#fad161"
-													shadow="3"
+													borderColor="#bdb2ff"
+													shadow="7"
 													alignContent="center"
-													alignItems="center"
+													justifyContent="space-between"
 													bg={
 														isPressed
-															? "#403d39"
+															? "white"
 															: isHovered
 															? "coolGray.200"
-															: "#252422"
+															: "#bdb2ff"
 													}
-													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -305,19 +337,33 @@ export default function Home({ navigation, updateAuthState }) {
 													1 month ago
 												</Text> */}
 													</HStack>
-													<Image
-														alt="heart"
-														size={12}
-														source={require("../../assets/heart.png")}
-													/>
 													<Text
-														color="#fad161"
-														mt="1"
-														fontWeight="bold"
-														fontSize="12"
+														color="black"
+														ml="3"
+														fontWeight={500}
+														italic
+														fontSize="lg"
 													>
 														Healthy Coping
 													</Text>
+													<Text
+														color="black"
+														ml="3"
+														fontSize="11"
+														opacity="0.5"
+													>
+														Living with Diabetes
+													</Text>
+													<Icon
+														as={Entypo}
+														name="chevron-small-right"
+														color="black"
+														ml="3"
+														size="8"
+														_dark={{
+															color: "warmGray.50",
+														}}
+													/>
 												</Box>
 											);
 										}}
@@ -328,21 +374,20 @@ export default function Home({ navigation, updateAuthState }) {
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="24"
-													h="24"
+													w="40"
+													h="40"
 													borderWidth="1"
-													borderColor="#fad161"
-													shadow="3"
+													borderColor="#caffbf"
+													shadow="7"
 													alignContent="center"
-													alignItems="center"
+													justifyContent="space-between"
 													bg={
 														isPressed
 															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "#252422"
+															: "#caffbf"
 													}
-													p="0.5"
 													rounded="8"
 													style={{
 														transform: [
@@ -368,20 +413,33 @@ export default function Home({ navigation, updateAuthState }) {
 													1 month ago
 												</Text> */}
 													</HStack>
-													<Image
-														alt="behavior"
-														size={12}
-														source={require("../../assets/customer-behavior.png")}
-													/>
 													<Text
-														color="#fad161"
-														ml="4"
-														mt="1"
-														fontWeight="bold"
-														fontSize="12"
+														color="black"
+														ml="3"
+														fontWeight={500}
+														italic
+														fontSize="lg"
 													>
 														Behavioral Changes
 													</Text>
+													<Text
+														color="black"
+														ml="3"
+														fontSize="11"
+														opacity="0.5"
+													>
+														Living with Diabetes
+													</Text>
+													<Icon
+														as={Entypo}
+														name="chevron-small-right"
+														color="black"
+														ml="3"
+														size="8"
+														_dark={{
+															color: "warmGray.50",
+														}}
+													/>
 												</Box>
 											);
 										}}
@@ -392,21 +450,20 @@ export default function Home({ navigation, updateAuthState }) {
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="24"
-													h="24"
+													w="40"
+													h="40"
 													borderWidth="1"
-													borderColor="#fad161"
-													shadow="3"
+													borderColor="#ffadad"
+													shadow="7"
 													alignContent="center"
-													alignItems="center"
+													justifyContent="space-between"
 													bg={
 														isPressed
 															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "#252422"
+															: "#ffadad"
 													}
-													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -432,19 +489,33 @@ export default function Home({ navigation, updateAuthState }) {
 													1 month ago
 												</Text> */}
 													</HStack>
-													<Image
-														alt="plan"
-														size={12}
-														source={require("../../assets/plan.png")}
-													/>
 													<Text
-														color="#fad161"
-														mt="3"
-														fontWeight="bold"
-														fontSize="13"
+														color="black"
+														ml="3"
+														fontWeight={500}
+														italic
+														fontSize="lg"
 													>
 														Nutrition
 													</Text>
+													<Text
+														color="black"
+														ml="3"
+														fontSize="11"
+														opacity="0.5"
+													>
+														Living with Diabetes
+													</Text>
+													<Icon
+														as={Entypo}
+														name="chevron-small-right"
+														color="black"
+														ml="3"
+														size="8"
+														_dark={{
+															color: "warmGray.50",
+														}}
+													/>
 												</Box>
 											);
 										}}
@@ -455,21 +526,20 @@ export default function Home({ navigation, updateAuthState }) {
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="24"
-													h="24"
+													w="40"
+													h="40"
 													borderWidth="1"
-													borderColor="#fad161"
-													shadow="3"
+													borderColor="#fffffc"
+													shadow="7"
 													alignContent="center"
-													alignItems="center"
+													justifyContent="space-between"
 													bg={
 														isPressed
 															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "#252422"
+															: "#fffffc"
 													}
-													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -495,20 +565,33 @@ export default function Home({ navigation, updateAuthState }) {
 													1 month ago
 												</Text> */}
 													</HStack>
-													<Image
-														alt="physical"
-														size={12}
-														source={require("../../assets/runner.png")}
-													/>
 													<Text
-														color="#fad161"
-														ml="5"
-														mt="1"
-														fontWeight="bold"
-														fontSize="12"
+														color="black"
+														ml="3"
+														fontWeight={500}
+														italic
+														fontSize="lg"
 													>
 														Physical Activity
 													</Text>
+													<Text
+														color="black"
+														ml="3"
+														fontSize="11"
+														opacity="0.5"
+													>
+														Get up and start owning diabetes
+													</Text>
+													<Icon
+														as={Entypo}
+														name="chevron-small-right"
+														color="black"
+														ml="3"
+														size="8"
+														_dark={{
+															color: "warmGray.50",
+														}}
+													/>
 												</Box>
 											);
 										}}
@@ -519,21 +602,20 @@ export default function Home({ navigation, updateAuthState }) {
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="24"
-													h="24"
+													w="40"
+													h="40"
 													borderWidth="1"
-													borderColor="#fad161"
-													shadow="3"
+													borderColor="#cdb4db"
+													shadow="7"
 													alignContent="center"
-													alignItems="center"
+													justifyContent="space-between"
 													bg={
 														isPressed
 															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "#252422"
+															: "#cdb4db"
 													}
-													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -559,19 +641,33 @@ export default function Home({ navigation, updateAuthState }) {
 													1 month ago
 												</Text> */}
 													</HStack>
-													<Image
-														alt="medicine"
-														size={12}
-														source={require("../../assets/medicine.png")}
-													/>
 													<Text
-														color="#fad161"
-														mt="3"
-														fontWeight="bold"
-														fontSize="13"
+														color="black"
+														ml="3"
+														fontWeight={500}
+														italic
+														fontSize="lg"
 													>
 														Medication
 													</Text>
+													<Text
+														color="black"
+														ml="3"
+														fontSize="11"
+														opacity="0.5"
+													>
+														Living with Diabetes
+													</Text>
+													<Icon
+														as={Entypo}
+														name="chevron-small-right"
+														color="black"
+														ml="3"
+														size="8"
+														_dark={{
+															color: "warmGray.50",
+														}}
+													/>
 												</Box>
 											);
 										}}
@@ -582,21 +678,20 @@ export default function Home({ navigation, updateAuthState }) {
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="24"
-													h="24"
+													w="40"
+													h="40"
 													borderWidth="1"
-													borderColor="#fad161"
-													shadow="3"
+													borderColor="#ffd6a5"
+													shadow="7"
 													alignContent="center"
-													alignItems="center"
+													justifyContent="space-between"
 													bg={
 														isPressed
 															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "#252422"
+															: "#ffd6a5"
 													}
-													p="0.5"
 													rounded="8"
 													style={{
 														transform: [
@@ -622,20 +717,33 @@ export default function Home({ navigation, updateAuthState }) {
 													1 month ago
 												</Text> */}
 													</HStack>
-													<Image
-														alt="glucose"
-														size={12}
-														source={require("../../assets/glucose-meter.png")}
-													/>
 													<Text
-														color="#fad161"
-														mt="2"
-														ml="4"
-														fontWeight="bold"
-														fontSize="12"
+														color="black"
+														ml="3"
+														fontWeight={500}
+														italic
+														fontSize="lg"
 													>
 														Glucose Monitoring
 													</Text>
+													<Text
+														color="black"
+														ml="3"
+														fontSize="11"
+														opacity="0.5"
+													>
+														Living with Diabetes
+													</Text>
+													<Icon
+														as={Entypo}
+														name="chevron-small-right"
+														color="black"
+														ml="3"
+														size="8"
+														_dark={{
+															color: "warmGray.50",
+														}}
+													/>
 												</Box>
 											);
 										}}
@@ -646,21 +754,20 @@ export default function Home({ navigation, updateAuthState }) {
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="24"
-													h="24"
+													w="40"
+													h="40"
 													borderWidth="1"
-													borderColor="#fad161"
-													shadow="3"
+													borderColor="#c0fdff"
+													shadow="7"
 													alignContent="center"
-													alignItems="center"
+													justifyContent="space-between"
 													bg={
 														isPressed
 															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "#252422"
+															: "#c0fdff"
 													}
-													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -686,20 +793,33 @@ export default function Home({ navigation, updateAuthState }) {
 													1 month ago
 												</Text> */}
 													</HStack>
-													<Image
-														alt="chronic"
-														size={12}
-														source={require("../../assets/headache.png")}
-													/>
 													<Text
-														color="#fad161"
-														mt="1"
-														ml="1"
-														fontWeight="bold"
-														fontSize="12"
+														color="black"
+														ml="3"
+														fontWeight={500}
+														italic
+														fontSize="lg"
 													>
-														Acute/ Chronic Complications
+														Acute/Chronic Complications
 													</Text>
+													<Text
+														color="black"
+														ml="3"
+														fontSize="11"
+														opacity="0.5"
+													>
+														Living with Diabetes
+													</Text>
+													<Icon
+														as={Entypo}
+														name="chevron-small-right"
+														color="black"
+														ml="3"
+														size="8"
+														_dark={{
+															color: "warmGray.50",
+														}}
+													/>
 												</Box>
 											);
 										}}
@@ -710,21 +830,20 @@ export default function Home({ navigation, updateAuthState }) {
 										{({ isHovered, isFocused, isPressed }) => {
 											return (
 												<Box
-													w="24"
-													h="24"
+													w="40"
+													h="40"
 													borderWidth="1"
-													borderColor="#fad161"
-													shadow="3"
+													borderColor="#f08080"
+													shadow="7"
 													alignContent="center"
-													alignItems="center"
+													justifyContent="space-between"
 													bg={
 														isPressed
 															? "#403d39"
 															: isHovered
 															? "coolGray.200"
-															: "#252422"
+															: "#f08080"
 													}
-													p="1"
 													rounded="8"
 													style={{
 														transform: [
@@ -750,19 +869,33 @@ export default function Home({ navigation, updateAuthState }) {
 													1 month ago
 												</Text> */}
 													</HStack>
-													<Image
-														alt="chronic"
-														size={12}
-														source={require("../../assets/monitor.png")}
-													/>
 													<Text
-														color="#fad161"
-														mt="3"
-														fontWeight="bold"
-														fontSize="13"
+														color="black"
+														ml="3"
+														fontWeight={500}
+														italic
+														fontSize="lg"
 													>
 														Dashboard
 													</Text>
+													<Text
+														color="black"
+														ml="3"
+														fontSize="11"
+														opacity="0.5"
+													>
+														Living with Diabetes
+													</Text>
+													<Icon
+														as={Entypo}
+														name="chevron-small-right"
+														color="black"
+														ml="3"
+														size="8"
+														_dark={{
+															color: "warmGray.50",
+														}}
+													/>
 												</Box>
 											);
 										}}
